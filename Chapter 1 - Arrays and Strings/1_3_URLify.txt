@@ -1,0 +1,40 @@
+
+"Mr%20John%20Smith" 13
+"Mr%20John%20Smith"
+
+"Mr%20hn SmithJo  "
+
+"Mr John SmitSmith"
+
+time O(n) memory O(n)	
+
+time O(n) memory O(1)
+
+     "Mr%20John%20Smith"
+end    ^
+i      ^
+
+void URLify(string &s, int realSize){
+
+	int end=0;
+	for(int i=0; i<realSize; i++){
+		if(s[i]==' ')
+			end++;
+	}
+
+	end=2*end+realSize;
+	s = s.substring(0, end--);
+
+	for(int i=realSize-1; end>i && i>=0; i--){
+		if(s[i]!=' '){
+			s[end--]=s[i];
+		}
+		else{
+			s[end--]='0';
+			s[end--]='2';
+			s[end--]='%';
+		}
+	}
+}
+
+

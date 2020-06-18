@@ -1,0 +1,81 @@
+
+aabccccaaa
+a2b1c4a3
+
+abcd
+a1b1c1d1
+
+abbbbbcd
+a1b5c1d1
+
+aabccccaaa
+a2b1c4a3
+
+a2b1c4a3
+
+O(n) O(n)
+
+aabccccaaa
+a2b1c4a3
+
+aaa
+
+int calcuteSize(int n){
+	int i=0;
+	while(n){
+		i++;
+		n/=10;
+	}
+	return 0;
+}
+
+aaab
+
+a3b1
+
+string compression(string toCompress){
+	if(!toCompress.size())
+		return "";
+
+	int newSize=1;
+	char c=toCompress[0];
+	int amount=1;
+	for(int i=1; i<toCompress.size(); i++){
+		if(toCompress[i]==c){
+			amount++;
+		}
+		else{
+			newSize+=calculateSize(amount)++;
+			amount=1;
+			c=toCompress[i];
+		}
+	}
+	newSize+=calculateSize(amount);
+
+	if(newSize>=toCompress.size())
+		return toCompress;
+
+	string newString(newSize, " ");
+
+	c=toCompress[0];
+	amount=1;
+	newString[0]=toCompress[0];
+	int s=1;
+	for(int i=1; i<toCompress.size(); i++){
+		if(toCompress[i]==c){
+			amount++;
+		}
+		else{
+			string add = to_string(amount);
+			for(int j=0; j<add.size(); j++)
+				newString[s++]=add[j];
+			c=newString[s++]=toCompress[i];
+		}
+	}
+	{
+		string add = to_string(amount);
+		for(int j=0; j<add.size(); j++)
+			newString[s++]=add[j];
+	}
+	return newString;
+}

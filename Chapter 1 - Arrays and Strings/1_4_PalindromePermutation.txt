@@ -1,0 +1,52 @@
+Tact Coa
+
+tactcoa
+
+baac
+
+a b c
+2 1 1
+
+O(n*n!)
+
+time O(n)  memory O(1)
+
+word      Tact CoaZ
+newString tactcoaz
+one = 0
+a c t o z
+2 2 2 1 1
+
+bool isPalindromePermutation(string word){
+	
+	string newString="";
+	for(int i=0; i<n; i++){
+		if(word[i]!=' '){
+			if(word[i]>='A' && word[i]<='Z'){
+				word[i] = word[i]-'A' + 'a';
+			}
+			newString+=word[i];
+		}
+	}
+
+	int c['z'-'a'+1];
+	for(int i=0; i<'z'-'a'+1; i++){
+		c[i]=0;
+	}
+
+	for(int i=0; i<newString.size(); i++){
+		c[newString[i]-'a']++;
+	}
+
+	int one = newString.size()%2;
+	for(int i=0; i<'z'-'a'+1; i++){
+		if(c[i]%2){
+			if(!one)
+				return false;
+			one--;
+		}
+	}
+
+	return true;
+
+}

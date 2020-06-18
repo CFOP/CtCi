@@ -1,0 +1,36 @@
+asdghr
+agfgrr
+
+sdgfar
+
+cabb
+
+abcb
+cbbb
+
+a b c
+1 2 1
+0 0 0
+
+time O(n) memory O(1)
+
+bool isPermutation(string a, string b){
+	if(a.size()!=b.size())
+		return false;
+
+	int c[255];
+	for(int i=0; i<255; i++)
+		c[i]=0;
+
+	for(int i=0; i<a.size(); i++){
+		c[a[i]]++;
+	}
+
+	for(int i=0; i<b.size(); i++){
+		c[b[i]]--;
+		if(c[b[i]]<0)
+			return false;
+	}
+
+	return true;
+}

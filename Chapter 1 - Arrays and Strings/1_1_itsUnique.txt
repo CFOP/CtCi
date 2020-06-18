@@ -1,0 +1,24 @@
+afsaaha  false
+aaaahfs
+
+abtsfej  true
+abejfts
+
+O(n^2) time O(1) space
+O(nlogn) time O(1) space
+
+O(n) time O(n) space
+
+
+bool isUnique(string s){ //O(nlogn) time O(1) space
+
+	sort(s.begin(), s.end());
+
+	for(int i=1; i<s.size(); i++){
+		if(s[i]==s[i-1])
+			return false;
+	}
+	
+	return true;
+
+}

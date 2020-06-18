@@ -1,0 +1,43 @@
+a b
+c f
+
+b f
+a c
+
+(0, n-1) (0, n-2) (0, n-3)
+(1, n-1) (1, n-2) (1, n-3)
+(2, n-1) (2, n-2) (2, n-3)
+
+a b c
+d e f
+g h i
+
+a d g
+b e h
+c f i
+
+c f i
+b e h
+a d g
+
+O(n^2) time O(1) memory
+
+c f i
+b e h
+a d g
+
+b d
+a c
+
+void rotateMatrix(pixel matrix[][], int n){
+	for(int i=0; i<n; i++){
+		for(int j=i; j<n; j++){
+			swap(matrix[i][j], matrix[j][i]);
+		}
+	}
+	for(int i=0; i<n/2; i++){
+		for(int j=0; j<n; j++){
+			swap(matrix[i][j], matrix[n-i-1][j]);
+		}
+	}
+}
