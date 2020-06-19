@@ -1,0 +1,22 @@
+ababs
+
+sabab
+
+sazab
+aba
+
+ababsababs
+
+O(isSubstring(m,n) + n) time O(n) memory
+
+ababsababs
+    sabab
+
+bool isRotation(string s1, string s2){
+	if(s1.size()!=s2.size())
+		return false;
+
+	s1+=s1;
+
+	return isSubstring(s2, s1);
+}
