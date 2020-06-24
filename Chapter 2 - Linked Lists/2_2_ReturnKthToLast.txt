@@ -1,0 +1,21 @@
+1 -> 2 -> 3 -> 5 -> 6 -> 7
+3
+
+O(n) time O(n) memory
+
+5
+1 -> 2 -> 3 -> 5 -> 6 -> 7
+0
+
+Node* kth(Node *list, int &k){
+	if(!list)
+		return null;
+	Node *solution = kth(list->next, k);
+	if(k){
+		k--;
+		if(!k)
+			return list;
+		return null;
+	}
+	return solution;
+}
