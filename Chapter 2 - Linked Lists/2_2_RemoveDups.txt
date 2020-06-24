@@ -1,0 +1,32 @@
+2 -> 3 -> 1 -> 4 -> 1
+2 -> 3 -> 1 -> 4
+
+2 -> 3 -> 1 -> 4 -> 1
+          ^
+^
+
+time O(n)
+memory O(n)
+
+2 -> 3 -> 1 -> 4 ->
+                    ^
+               ^
+
+2 3 1 4
+
+void remove(Node *n){
+	if(!n) return;
+	std::unordered_set <int> st;
+	Node *last;
+	last = n;
+	st.insert(last->value);
+	for(n = n->next; n; n = n->next, last = last->next){
+		while(n && st.find(n->value)){
+			last->next = n->next;
+			free(n);
+			n = last->next;
+		}
+		if(!n) continue;
+		st.insert(n->value);
+	}
+}
