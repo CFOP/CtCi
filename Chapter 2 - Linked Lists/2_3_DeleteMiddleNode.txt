@@ -1,0 +1,15 @@
+a->b->c->d->f->g
+a->b->d->f->g
+
+a->b->c->d->f->g
+a->b->d->f->g
+
+O(n) O(1)
+
+a->b->c->d->f->g
+
+void delete(Node *n){
+	Node *toDelete = c->next;
+	*c= *d;
+	free(toDelete);
+}
