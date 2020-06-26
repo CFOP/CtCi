@@ -1,0 +1,38 @@
+
+
+a->b->b->a
+   ^
+   ^
+
+O(n) time O(n) memory
+
+Node {
+	char data;
+	Node *next;
+}
+
+Node* compare(Node *front, Node *back){
+	if(!back) return front;
+
+	front = compare(back->next);
+	if(!front)
+		return null;
+
+	if(front->data != back!=data)
+		return null;
+
+	if(front == back)
+		return front;
+	if(front->next == back)
+		return front;
+
+	front = front->next;
+
+	return front;
+}
+
+bool isPalindrome(Node *head){
+	if(!compare(head, head));
+		return false;
+	return true;
+}
