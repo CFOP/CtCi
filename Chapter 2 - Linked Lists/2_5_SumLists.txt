@@ -1,0 +1,54 @@
+7->1->6
+5->9->2
+
+2->1->9
+
+617 + 295 = 912
+
+7->1->7
+5->9->2->1
+2  1  0 1
+
+
+617
+295
+
+7->1->7
+2->9->5->2
+^
+1
+
+1->0->1->1
+
+O(n) time O(n) memory
+
+int makeSum(Node *a, Node *b, Node **sum){
+	if(!a && !b)
+		return 0;
+	if(a->next && !b->next) swap(a, b);
+	if(!a && b){
+		return (makeSum(a, b->next, sum)+b->value)*10;
+	}
+	int p = makeSum(a->next, b->next, sum);
+	Node *toAdd = new Node;
+	toAdd->value = (p+a->value+b->value)%10;
+	toAdd->next = *sum; 
+	*sum = toAdd;
+	return (p+a->value+b->value)/10;
+}
+
+Node* sumLists(Node *a, Node *b){
+	if(!a)
+		return b;
+	if(!b)
+		return a;
+	Node *sum;
+	int value;
+	if(value = makeSum(a, b, &sum)){
+		Node *toAdd = new Node;
+		toAdd -> next = sum;
+		toAdd -> value = value;
+		sum = toAdd;
+	}
+	return sum;
+}
