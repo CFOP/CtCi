@@ -1,0 +1,39 @@
+
+a->b->c->d->g
+             ^
+f->e->d->g
+^
+
+a
+
+d
+
+ a->b->c
+ a->b->c
+
+O(A + B) time O(A + B) memory
+
+void addList(stack &st, Node *head){
+	for(Node *p=head; p; p=p->next){
+		st.push_back(p);
+	}
+}
+
+Node* intersection(Node *head1, Node *head2){
+	std::stack<Node*> list[2];
+
+	addList(list[0], head1);
+	addList(list[1], head2);
+
+	Node *intersection = null;
+
+	while(!list[0].empty() && !list[1].empty()){
+		if(list[0].top()==list[1].top())
+			intesection = list[0].top();
+		else break;
+		list[0].pop();
+		list[0].pop();
+	}
+
+	retur intersection;
+}
