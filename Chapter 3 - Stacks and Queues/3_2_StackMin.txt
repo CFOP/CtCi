@@ -1,0 +1,39 @@
+
+10 9
+10 9
+
+class Stack{
+	private:
+	std::stack <int> value;
+	std::stack <int> min;
+
+	public:
+
+	Stack(){
+
+	}
+
+	int top(){
+		return value.top();
+	}
+
+	int min(){
+		return min.top();
+	}
+
+	int push(int v){
+
+		value.push(v);
+
+		if(min.empty())
+				min.push(v);
+		else
+				min.push(std::min(min.top, v));
+	}
+
+	void pop(){
+			min.pop();
+			value.pop();
+	}
+
+};
