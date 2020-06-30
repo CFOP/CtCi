@@ -1,0 +1,28 @@
+
+1 2 3 5
+6 7 8 9
+10
+
+class SetOfStacks{
+		private:
+			std::vector<stack<int>> st;
+			int limit;
+		public:
+			SetOfStacks(int limit){
+				this->limit = limit;
+			}
+
+			int pop(){
+				int v = st[st.size()-1].top();
+				st[st.size()-1].pop();
+				if(!st[st.size()-1].size())
+					st.pop();
+				return v;
+			}
+
+			voud push(int v){
+				if(st[st.size()-1].size==limit)
+					st.push(new stack<int>);
+				st[st.size()-1].push(v);
+			}
+};
