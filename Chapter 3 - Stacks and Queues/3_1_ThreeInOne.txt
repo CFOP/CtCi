@@ -1,0 +1,38 @@
+
+
+[52              43]
+   ^            ^ 
+
+[4        223        ]
+        ^
+                  ^
+        ^
+
+
+class MultiStack{
+		private:
+				int *array;
+				int n;
+				int size[3];
+				int begin[3];
+
+		public:
+				MultiStack(int size){
+						array = new int[size];
+						for(int i=0;i<3; i++)
+								size[i]=begin[i]=i*size/3;
+				}
+				void push(int i, int value){ //push value on stack i
+						array[size[i]++]=value;							
+				}
+				void pop(int i){
+						if(size[i]==begin[i])
+								return;
+						size[i]--;
+				}
+				int top(int i){
+						if(size[i]==begin[i])
+								return 0;
+						return array[size[i]-1];
+				}	
+};
