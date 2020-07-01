@@ -1,0 +1,22 @@
+
+1 2 6 2 3 5 7 2
+
+void sortStack(std::stack <int> &st){
+	std::stack <int> reverse;
+
+	reverse.push(st.top());
+	st.pop();
+	while(st.size()){
+		if(reverse.top()>st.top()){
+			std::swap(reverse.top(), st.top());
+		}
+		reverse.push(st.top());
+		st.pop();
+	}
+
+	while(reverse.size()){
+		st.push(reverse.top());
+		reverse.pop();
+	}
+
+}
