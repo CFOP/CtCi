@@ -1,0 +1,39 @@
+
+1, 2 - 3, 4 - 4, 5
+2, 3 - 5, 10
+
+class AnimalQueue{
+	private:
+		queue <pair<int, string>> dog; //time, name
+		queue <pair<int, string>> cat;
+		int time;
+
+	public:
+		AnimalQueue(){
+			time = 0;
+		}
+		void enqueueDog(string name){
+			dog.push(make_pair(time++, name));
+		}
+		void enqueueCar(string name){
+			cat.push(make_pair(time++, name));
+		}
+
+		string dequeueCat(){
+			string name = cat.top().second;
+			cat.pop();
+			return name;
+		}
+
+		string dequeueDog(){
+			string name = dog.top().second;
+			dog.pop();
+			return name;
+		}
+
+		string dequeue(){
+			if(dog.top().first < cat.top().first)
+				retutn dequeueDog();
+			return dequeueCat();
+		}
+}
