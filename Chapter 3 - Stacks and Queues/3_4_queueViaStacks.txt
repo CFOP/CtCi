@@ -1,0 +1,37 @@
+
+>
+>3 1
+
+class MyQueue{
+	private:
+		stack <int> popQ;
+		stack <int> pushQ;
+
+	public:
+		MyQueue(){
+
+		}
+
+		void push(int value){
+			if(pushQ.empty()){
+				while(!popQ.empty()){
+					pushQ.push(popQ.top());
+					popQ.pop();
+				}
+			}
+			pushQ.push(value);
+		}
+
+		int pop()){
+			if(popQ.empty()){
+				while(!pushQ.empty()){
+					popQ.push(pushQ.top());
+					pushQ.pop();
+				}
+			}
+			if(popQ.empty())return 0;
+			int value = popQ.top();
+			popQ.pop();
+			return value;
+		}
+};
