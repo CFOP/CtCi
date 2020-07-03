@@ -9,7 +9,7 @@ O(n) O(1)
 a->b->c->d->f->g
 
 void delete(Node *n){
-	Node *toDelete = c->next;
-	*c= *d;
+	Node *toDelete = n->next;
+	*n= *d;
 	free(toDelete);
 }
