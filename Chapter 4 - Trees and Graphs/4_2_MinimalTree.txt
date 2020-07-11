@@ -1,0 +1,38 @@
+
+struct Node{
+	Node *left, *right;
+	int data;
+
+	Node(int data);
+}
+
+/*
+1 2 3 4 5 6 7 8 9 10
+1
+2 1<<1;
+3 1<<1 + 1;
+4 2<<1;
+5 2<<1 + 1;
+6 
+7
+
+1 2 3
+ 
+ 2
+1
+ 3
+
+*/
+
+Node* construct(const std::vector<int> &sortedArray, int pos=1){
+	
+	if(pos>sortedArray.size())
+		return NULL;
+
+	Node *actualNode = new Node(sortedArray[pos-1]);
+
+	actualNode -> left = construct(sortedArray, pos<<1);
+	actualNode -> right = construct(sortedArray, pos<<1 + 1);
+
+	return actualNode;
+}
