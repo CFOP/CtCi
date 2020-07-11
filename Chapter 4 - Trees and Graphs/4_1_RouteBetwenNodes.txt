@@ -1,0 +1,32 @@
+struct Node {
+	string ID;
+	bool visited=false;
+	vector <Node*> edge;
+}
+
+struct Graph {
+	vector <Node*> v;
+}
+
+
+1 -> 4
+1 -> 2 -> 3
+2 -> 4
+
+
+bool isARoute(Node *a, Node *b){
+	if(!a || !b)
+		return false;
+	if(a == b)
+		return true;
+	if(a->visited)
+		return false;
+	a->visited = true;
+
+	for(Node *v : a->edge){
+		if(isARoute(v, b))
+			return true;
+	}
+
+	return false;
+}

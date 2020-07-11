@@ -34,7 +34,6 @@ struct Node{
         else
             std::cout<<"\n";
     }
-
 };
 
 Node* intersection(Node *a, Node *b){
@@ -65,6 +64,7 @@ int main(){
     Node *lista = new Node(1);
     lista->add(2);
     lista->add(3);
+    lista->add(4);
     lista->add(4);
 
     Node *a = new Node(5);
