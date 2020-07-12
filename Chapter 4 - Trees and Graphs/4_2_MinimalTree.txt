@@ -24,15 +24,12 @@ struct Node{
 
 */
 
-Node* construct(const std::vector<int> &sortedArray, int pos=1){
-	
-	if(pos>sortedArray.size())
-		return NULL;
-
-	Node *actualNode = new Node(sortedArray[pos-1]);
-
-	actualNode -> left = construct(sortedArray, pos<<1);
-	actualNode -> right = construct(sortedArray, pos<<1 + 1);
-
-	return actualNode;
+Node* buildDFS(const int *DATA, int left, int right){
+    if(left>=right)
+        return nullptr;
+    int middle = (left+right)/2;
+    Node *toAdd = new Node(DATA[middle]);
+    toAdd ->left = buildDFS(DATA, left, middle);
+    toAdd ->right = buildDFS(DATA, middle+1, right);
+    return toAdd;
 }
