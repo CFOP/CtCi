@@ -1,0 +1,39 @@
+1 - 2 - 3
+|
+4 - 6
+|
+5
+
+1
+
+2 4
+
+3 6 5
+
+struct Node{
+	int data;
+	Node *left;
+	Node *right;
+};
+
+void dfs(Node *actual, std::vector <std::linkedList<int>> &ans, int depth = 0){
+	if(actual==nullptr)
+		return;
+
+	if(ans.size()==depth){
+		ans.push_back(new std::linkedList<int>());
+	}
+
+	ans[depth].insert(actual->data);
+
+	dfs(actual->right, ans, depth+1);
+	dfs(actual->left, ans, depth+1);
+
+}
+
+
+std::vector <std::linkedList<int>> listDepth(Node *root){
+	std::vector <std::linkedList<int>> ans;
+	dfs(root, ans);
+	return ans;
+}
