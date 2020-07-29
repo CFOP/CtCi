@@ -1,0 +1,27 @@
+5 - 1
+|
+7 - 2
+
+bool checkBalanced(Node *actual, int &height){
+	if(!actual){
+		height = 0;
+		return true;
+	}
+	int leftHeight, rightHeight;
+	if(!checkBalanced(actual->left, leftHeight))
+		return false;
+	if(!checkBalanced(actual->right, rightHeight))
+		return false;
+
+	if(abs(leftHeight-rightHeight) >  1) 
+		return false;
+	
+	height = max(leftHeight, rightHeight) + 1;
+	return true;
+
+}
+
+bool isBalanced(Node *root){
+	int firstHeight = 0;
+	return checkBalanced(root, firstHeight);
+}
