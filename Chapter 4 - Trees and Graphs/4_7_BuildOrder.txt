@@ -1,0 +1,41 @@
+a -> d -> c
+^
+f -> b -> d
+
+e
+
+O(n)
+O(n)
+
+e f a d c b d
+
+void visit(char v, pPj, g, nPPj, order);
+
+std::vector <char> buildOrder(std::vector <char> pj, std::vector<pair<char, char>> d){
+	std::unordered_map <char, vector<char>> g; //
+	std::unordered_map <char, int>  pPj;
+	std::unordered_map <char, bool>  visited;
+
+	for(char c : pj)
+		pPj[c] = 0;
+
+	for(auto i : d){
+		g[i.first].push_back(i.second);
+		pPj[i.second]++;
+	}
+
+	int nPPj = pj.size();
+	std::vector <char> order;
+
+	for(auto v : pj){
+		if(pPj[v] == 0){
+			dfs(v, pPj, g, nPPj, order);
+		}
+	}
+
+	if(nPPj != 0)
+		throw error;
+
+	return order;
+
+}
