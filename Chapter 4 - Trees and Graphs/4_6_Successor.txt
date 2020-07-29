@@ -1,0 +1,31 @@
+10 - 20 - 30
+|	 |
+5    15 - 16 - 17 - 18
+
+left
+node
+right
+
+Node* findLeft(Node *actual){
+	if(acutal->left)
+		return findLeft(actual->left);
+	return actual;
+}
+
+Node* nextInOrder(Node *actual){
+	if(!actual)
+		return nullptr;
+	if(actual->right)
+		return findLeft(actual->right);
+
+	if(!actual->dad) return nullptr;
+
+	while(actual->dad->dad && actual->data > actual->dad->data){
+		actual = actual->dad;
+	}
+	
+	if(actual->dad->data >= actual->data)
+		return actual->dad;
+
+	return nullptr;
+}
