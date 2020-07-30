@@ -1,0 +1,51 @@
+2  - 1 - 4
+|    |
+3    2 - 3 - 2
+|
+1
+
+int findCA(Node *actual, const Node *a, const Node *b, Node &* ancestor){
+	if(!actual)
+		return 0;
+
+	int equals = 0;
+	if(a == actual) 
+		equals++;
+	if(b == actual)
+		equals++;
+
+	if(equals == 1){
+		if(findCA(actual->right, a, b, ancestor)){	
+			ancestor = actual;
+			return 2;
+		}
+		if(findCA(actual->left, a, b, ancestor)){
+			ancestor = actual;
+			return 2;
+		}
+		return 1;
+	}
+
+	equals = findCA(actual->right, a, b, ancestor);
+	if(equals == 2)
+		return 2;
+		
+	if(equals == 1){
+		if(findCA(actual->left, a, b, ancestor)){
+			ancestor = actual;
+			return 2;
+		}
+		return 1;
+	}
+
+	return equals + findCA(actual->left, a, b, ancestor);
+}
+
+Node* firsCommonAncestor(Node *root, Node *a, Node *b){
+	Node *ancestor = nullptr;
+	if(a==b)
+		return a;
+	if(findCA(root, a, b, ancestor) < 2)
+		return nullptr;
+	return ancestor;
+}
