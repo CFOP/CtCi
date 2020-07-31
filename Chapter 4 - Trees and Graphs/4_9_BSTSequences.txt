@@ -1,0 +1,58 @@
+3 - 5 - 6
+|   |
+2   4
+|
+1
+
+3 - 5
+|   
+2   
+
+3
+2 5
+
+3 2 5
+3 5 2
+
+void createVector(Node *root, std::vector<vector<int>> &level, int deepth){
+	if(!root)
+		return;
+	if(level.size()==deepth){
+		vector<int> a;
+		level.push_back(a);
+	}
+	level[deepth].push_back(root->data);
+
+	createVector(root->left, level, deepth+1);
+	createVector(root->right, level, deepth+1);
+}
+
+void printPermutations(std::vector<vector<int>> &level, int deepth, int pos){
+
+	if(deepth == level.size()){
+		for(std::vector<int> j : level)
+			for(int i : j)
+				cout<<i<<" ";
+		cout<<"\n";
+		return;
+	}
+
+	if(pos == level[deepth].size()){
+		printPermutations(level, deepth+1, 0);
+		return;
+	}
+
+	for(int i = pos; i< level[deepth].size(); i++){
+		swap(level[deepth].at(pos), level[deepth].at(i));
+		printPermutations(level, deepth, pos+1);
+		swap(level[deepth].at(pos), level[deepth].at(i));
+	}
+
+}
+
+
+void prinPosibleArray(Node *root){
+	std::vector <vector<int>> level;
+	createVector(root, level, 0);
+	printPermutations(level, 0, 0);
+}
