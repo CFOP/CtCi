@@ -1,0 +1,36 @@
+5 - 4 - 2 - 1
+|		    |
+4 - 1       8
+|
+2 - 5
+|
+5
+
+5425514218
+  255
+
+2 - 5
+|
+5
+
+O(nm)
+
+bool compare(Node *T1, Node *T2){
+	if(!T1 || !T2)
+		return T1 == T2;
+	if(T1->data!=T2->data)
+		return false;
+	return compare(T2->right, T2) && compare(T2->left, T2);
+}
+
+bool isSubtree(Node *T1, Node *T2){
+	if(!T2)
+		return true;
+	if(!T1)
+		return false;
+	if(T1->data == T2->data){
+		if(compare(T1, T2))
+			return true;
+	}
+	return isSubtree(T1->right) || isSubtree(T1->left);
+}
