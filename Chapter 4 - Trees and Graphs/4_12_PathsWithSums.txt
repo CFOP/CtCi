@@ -1,0 +1,38 @@
+2 - 5 - 10
+|   |
+6   3 - 1
+|
+4
+
+3 - 1 - 1 - 1 - 1  - 1
+
+3 4 5 6 
+ 7 - x = 4
+actualSum - x = sum
+
+
+
+O(n) time
+O(D) memory
+
+int findSum(Node *root, int sum, unordered_map <int, int> &acum, int actualSum){
+	if(!root)
+		return false;
+	actualSum += root->data;
+	int s = 0;
+	if(acum.find(acutalSum) == acum.end())
+		acum[actualSum] = 0;
+	acum[actualSum]++;
+	if(acum.find(actualSum-sum))
+		s = acum[actualSum-sum];
+	s += findSum(root->left, sum, acum, actualSum);
+	s += findSum(root->right, sum, acum, actualSum);
+	acum[actualSum]--;
+	return s;
+}
+
+int pathsWithSum(Node *root, int sum){
+	unordered_map <int, int> acum;
+	acum[0]=1;
+	return findSum(root, sum, aum);
+}
