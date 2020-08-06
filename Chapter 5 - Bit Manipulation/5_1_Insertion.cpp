@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-using namespace std;
 
 uint32_t insertion(uint32_t N, uint32_t M, uint8_t i, uint8_t j){
 	uint32_t mask = 1<<j;
