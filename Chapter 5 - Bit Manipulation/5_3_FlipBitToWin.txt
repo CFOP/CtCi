@@ -1,0 +1,51 @@
+
+111001100001101111
+
+actual 0
+last 2
+zero 1
+
+maxBits 7
+
+O(1)
+O(log2 n)
+
+bool getFirstBit(int n){
+	return n & 1;
+}
+
+void deleteBit(int &n){
+	n = n>>>1;
+}
+
+uint8_t flipToWin(int n){
+	uint8_t maxBits = 0;
+	uint8_t lastSize = 0;
+	uint8_t actualSize = 0;
+	uint8_t zero = 0;
+
+	for(uint8_t i = 0; i<=sizeof(int)*8; i++){
+		if(i<sizeof(int)*8 && getFirstBit(n)){
+			actualSize++;
+		}
+		else if(!actualSize)
+			zero++;
+		else {
+			if(zero==1){
+				maxBits = std::max(maxBits, actualSize+lastSize+1);
+			}
+			else if(!zero){
+				maxBits = std::max(maxBits, actualSize+lastSize);
+				zero++;
+			}
+			else {
+				maxBits = std::max(maxBits, actualSize+1);
+			}
+			lastSize = actualSize;
+			actualSize = 0;
+		}
+		deleteBit(n);
+	}
+
+	return maxBits;
+}
