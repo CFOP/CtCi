@@ -1,0 +1,53 @@
+
+10110010
+11111101
+
+10110000
+01000000
+
+10110000
+00000100
+
+11111110
+
+11110000
+10110100
+
+
+101110000
+01000000
+
+2, 2
+
+		 //smallest, largest	
+std::pair<int, int> nextNumber(int n){
+	
+	int firsOne;
+	int i;
+	for(i=n, firstOne=0; n%2==0; i/=2, firsOne++);
+
+	int mask = ~(1<<firsOne);
+	int small = n & mask;
+	int larg = n & mask;
+
+	int lasZero = 0;
+	int firsZero = 0;
+	n >>= firstOne+1;
+
+	for(i=firstOne+1; i<31; i++, n/=2){
+		if(n%2==0){
+			if(!firstZero)
+				firstZero=i;
+			lastZero=i;
+		}
+	}
+
+	if(!lastZero){
+		//throw error
+	}
+
+	small |= 1<<firstZero;
+	large |= 1<<lastZero;
+
+	return make_pair(small, large);
+}
