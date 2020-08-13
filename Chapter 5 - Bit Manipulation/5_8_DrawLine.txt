@@ -1,0 +1,33 @@
+
+y = 0
+x1 = 6
+x2 = 23
+
+
+0000 0000 0000 0000 0000 0000 0000
+     0011 1111 1111 1111 1110
+
+0000 0011 1111 1111 1111 1110 0000
+
+void drawLine(std::vector<uint8_t> screen, int width, int x1, int x2, int y){
+
+	int start = (width/8)*y;
+	start += x1/8;
+	if(x1%8){
+		mask = (1<<((x1%8)))-1;
+		screen[start] |= mask;
+	}
+	else
+		start--;
+
+	int end = (width/8)*y;
+	end += x2/8 + 1;
+	if(x2%8){
+		mask = ~((1<<((4 - x1%8)))-1);
+		screen[end] |= mask;
+	}
+
+	for(int i=start+1; i<end; i++)
+		screen[i]=255;
+
+}
