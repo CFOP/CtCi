@@ -1,0 +1,27 @@
+1101
+0011
+
+0001
+0010
+
+0b10101010101010101010101010101010 mask
+
+0010
+0001
+
+0011
+
+
+int pairwiseSwap(int n){
+	int r, mask, a;
+	mask = 0b10101010101010101010101010101010;
+	r = n<<1;
+	r ^= n;
+	mask &= r;
+	mask = mask | (mask>>1);
+	a = n&mask;
+	a = (~a)&mask;
+	n &= ~mask;
+	n |= a;
+	return n;
+}
