@@ -1,0 +1,45 @@
+
+000010
+001101
+100100
+100100
+000000
+
+.R0010
+DD1101
+1DR100
+1DD100
+0DRRRR
+
+
+O(rc) time
+O(r+c) memory
+
+std::string searchPath(std::vector<std::string> grid, int r, int c){
+	grid[0][0] = '.';
+	for(int i=0; i<r; i++)
+		for(int j=0; j<c; j++){
+			if(grid[i][j]!='0' || grid[i][j]!='1'){
+				if(i<r-1 && grid[i+1][j]!='1'){
+					grid[i+1][j] = 'D';
+				}
+				if(j<c-1 && grid[i][j+1]!='1'){
+					grid[i][j+1] = 'R';
+				}
+			}
+		}
+
+	string path = "";
+	r--; c--;
+	while(r>0 || c>0){
+		path += grid[r][c];
+		if(grid[r][c] == 'R')
+			c--;
+		else
+			r--;
+	}
+	reverse(path.begin(), path.end());
+
+	return path;
+}
+

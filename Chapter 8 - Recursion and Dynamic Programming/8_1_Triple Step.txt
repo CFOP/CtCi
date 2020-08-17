@@ -4,7 +4,7 @@ f(i) {
 		return 1;
 	if(i>n)
 		return 0;
-	return f(i+1) + f(i+2) + f(i+3);
+	return f(i+1) + f(i+2) + f(i+3); 
 }
 
 24 13 7 4 2 1 1 0 0
