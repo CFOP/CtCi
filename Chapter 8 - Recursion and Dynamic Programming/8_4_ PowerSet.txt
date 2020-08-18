@@ -1,0 +1,31 @@
+O(2^n)
+O(2^n)
+
+3 2 1
+-
+3 2 1
+2 1
+3 1
+1
+3 2
+2
+3
+
+-
+
+std::vector<std::set<int>> subsets(std:set<int> st){
+	vector<std::set<int>> sbSets;
+	sbSets.pushBack(std::set<int>);
+	for(int element : st){
+		vector<std::set<int>> oldSbSets;
+		for(auto &s : sbSets){
+			newSbSets.push_back(s);
+			s.insert(element);
+		}
+		for(auto s : oldSbSets){
+			sbSets.push_back(s);
+		}
+	}
+
+	return sbSets;
+}
