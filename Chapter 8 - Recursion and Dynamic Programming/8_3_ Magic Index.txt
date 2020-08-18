@@ -1,0 +1,24 @@
+//this problem doesnt belong to this section .-.
+
+0 1 2 4 2 6 7 8 9 10
+0 1 2 3 4 5 6 7 8 9
+
+int maginIndex(std:vector<int> A){
+	int left = 0; 
+	int right = A.size();
+
+	//[left, right)
+	while(left+1<right){
+		int m = (left+right)/2;
+		if(A[m]==m)
+			return m;
+		if(A[m]>m)
+			right = m;
+		else
+			left = m;
+	}
+
+	if(A[left] == left)
+		return left;
+	return -1;
+}
