@@ -1,0 +1,26 @@
+15 * 8 + 15 + 15 + 13
+11
+
+11
+15
+
+time O( log (min(a, b) ) )
+
+int sum(int a, int b, int n){
+	if(n==0)
+		return 0;
+	return sum(a, b, n-1) + 1;
+}
+
+int multiply(int a, int b, int n = 1){
+	if(a>b)
+		return multiply(b, a);
+
+	if(1<<n <= a){
+		return multiply(a, b, n+1); 
+	}
+	else {
+		return b<<n + sum(a, b, a - 1<<n);
+	}
+
+}
