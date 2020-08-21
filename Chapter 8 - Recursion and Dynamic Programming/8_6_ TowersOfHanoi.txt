@@ -1,0 +1,24 @@
+
+n
+
+1    
+2     
+3      
+4      
+5     
+a  b c
+
+move(n-1, a, c, b)
+a->c
+move(n-1, b, a, c)
+
+void hanoi(int n, char a = 'a', char b = 'b', char c = 'c'){
+	if(n == 1){
+		std::cout<<a<<"->"<<c<<"\n";
+		return;
+	}
+	hanoi(n-1, a, c, b);
+	std::cout<<a<<"->"<<c<<"\n";
+	hanoi(n-1, b, a, c);
+}
+
