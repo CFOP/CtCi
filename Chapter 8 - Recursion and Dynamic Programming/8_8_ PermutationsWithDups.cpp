@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <unordered_set>
 
 void generatePermutations(std::string s, std::vector<std::string> &p, int i = 0){
 	if(i==s.size()){
@@ -9,9 +10,12 @@ void generatePermutations(std::string s, std::vector<std::string> &p, int i = 0)
 		return;
 	}
 
+    std::unordered_set<char> used;
 	for(int j = i; j<s.size(); j++){
 		std::swap(s[j], s[i]);
-		generatePermutations(s, p, i+1);
+		if(used.find(s[i])==used.end())
+            generatePermutations(s, p, i+1);
+        used.insert(s[i]);
 		std::swap(s[j], s[i]);
 	}
 }
@@ -28,3 +32,4 @@ int main(){
     PermutationsWithoutDups(s);
     return 0;
 }
+
