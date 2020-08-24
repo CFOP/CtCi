@@ -1,0 +1,22 @@
+asdgg
+
+time O(n!) memory O(n)
+
+void generatePermutations(std::string s, std::vector<std::string> &p, int i = 0){
+	if(i==s.size()){
+		p.push_back(s);
+		return;
+	}
+
+	for(int j = i+1; j<s.size(); j++){
+		swap(s[j], s[i]);
+		generatePermutations(s, p, i+1);
+		swap(s[j], s[i]);
+	}
+}
+
+std::vector<string> PermutationsWithoutDups(std::string s){
+	std::vector <std::string> p;
+	generatePermutations(s, p);
+	return p;
+}
