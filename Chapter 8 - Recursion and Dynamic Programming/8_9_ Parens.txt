@@ -1,0 +1,39 @@
+
+(()())
+
+0
+(
+
+>0 and n - i < p 
+)
+(
+
+>0
+)
+
+
+2 0 
+	1 1 (
+		1 0 ()
+		  0 1 ()()
+	
+(())
+()()
+
+void parens(int n, int close = 0, string s = ""){
+	if(!n){
+		std::cout<<s;
+		while(close--)
+			std::cout<<')';
+		return;
+	}
+
+	if(n){
+		parens(n-1, close+1, s+'(');
+	}
+
+	if(close){
+		parens(n, close-1, s+')');
+	}
+
+}
