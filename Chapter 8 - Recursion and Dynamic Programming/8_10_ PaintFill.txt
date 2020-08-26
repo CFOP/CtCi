@@ -1,0 +1,18 @@
+
+void draw(int x, int y, int color, int **img, int n, int toFill){
+	if(x<0 || y<0 || x>=n || y>=n)
+		return;
+	if(img[y][x]==toFill){
+		img[y][x]= color;
+		draw(x+1, y, color, img, n, toFill);
+		draw(x-1, y, color, img, n, toFill);
+		draw(x, y+1, color, img, n, toFill);
+		draw(x, y-1, color, img, n, toFill);
+	}
+}
+
+void fill(int x, int y, int color, int **img, int n){
+	if(img[y][x] != color){
+		draw(x, y, color, img, n, img[y][x]);
+	}
+}

@@ -20,6 +20,9 @@
 (())
 ()()
 
+time ~O(2^n)
+memory O(n^2) if &s then O(n)
+
 void parens(int n, int close = 0, string s = ""){
 	if(!n){
 		std::cout<<s;
