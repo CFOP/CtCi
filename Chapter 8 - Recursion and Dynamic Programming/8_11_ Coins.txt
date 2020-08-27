@@ -1,0 +1,28 @@
+
+
+n
+25 10 5 1
+
+dp n
+
+f(n) = { f(n-25) + f(n-10)  }
+
+O(n) time O(n) memory
+
+
+int coins(int n){
+	vector<int> dp(n+1, 0);
+	const vector<int> c= {25, 10, 5, 1};
+	
+	for(int i=0; i<c.size(); i++)
+		if(n>=c[i])
+			dp[c[i]]=1;
+
+	for(int i =1; i<=n; i++)
+		for(int coin : c)
+			if(i>coin)
+				dp[i] += dp[i-coin];
+
+	return dp[n];
+}
+
