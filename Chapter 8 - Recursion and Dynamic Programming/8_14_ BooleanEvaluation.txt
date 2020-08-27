@@ -1,0 +1,41 @@
+
+
+1^0|0|1
+
+(1^0)|0|1
+1^0|0|1
+
+true
+1 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 1
+
+
+int countEval(string exp, bool result){
+	int timeTrue[exp.size()/2][exp.size()/2];
+	int timeFalse[exp.size()/2][exp.size()/2];
+
+	for(int i=0; i<exp.size()/2; i++)
+		for(int j = 0; j<exp.size()/2; j++){
+			timeTrue[i][j] = timeFalse[i][j] = 0;
+		}
+
+	vector<bool> bit;
+	vector<char> op;
+	for(int i = 0; i<exp.size()/2 - 1; i++){
+		bit.push_back(exp[i*2] - '0');
+		op.push_back(exp[i*2+1]);
+	}
+
+	for(int i = 1; i<exp.size()/2; i++){
+		timeTrue[i][i] = bit[i];
+		timeFalse[i][i] = !bit[i];
+	}
+
+	for(int i = 0; i<exp.size()/2; i++){ //size
+		for(int j = 0; j<exp.size()/2-1; j++){ 
+			if(op[j])
+		}
+	}
+}
