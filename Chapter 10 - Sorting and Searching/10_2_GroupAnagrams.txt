@@ -1,0 +1,33 @@
+
+apb
+aap
+bap
+
+
+O(nk) time
+O(nk) memory
+
+abp - apb bap
+aap - aap
+
+apb bap aap
+
+vector <string> groupAnagrams(vector <string> word){
+	unordered_map <string, vector<string>> group;
+	for(string s : word){
+		unordered_map<char, int> count;
+		for(char c : s)
+			count[c]++;
+		string key = "";
+		for(auto element : count)
+			key += string(element->second, element->first)
+		group[key].push_back(s);
+	}
+
+	vector<string> ans;
+	for(auto v : group)
+		for(string s: v)
+			ans.push_back(s);
+
+	return v;
+}
