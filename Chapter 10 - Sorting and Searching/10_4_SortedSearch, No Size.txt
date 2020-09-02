@@ -1,0 +1,26 @@
+Listy
+
+1 2 3 3 5 6 7 11 15 30 -1 -1 -1 -1
+
+4
+O(log n)
+O(1)
+
+int find(Listy a, int n){
+	int right = 1;
+	while(a.elementAt(right) >= 0 && a.elementAt(right) <=n){
+		right*=2;
+	}
+
+	int left = 0;
+	while(left+1<right){
+		int m = (left+right)/2;
+		if(a.elementAt[m]>=0 && a.elementAt[m]<=n)
+			left = m;
+		else right = m;
+	}
+
+	if(a[left]!=n) return -1;
+	return left;
+}
+
