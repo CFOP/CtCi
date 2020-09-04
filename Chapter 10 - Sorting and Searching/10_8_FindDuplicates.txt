@@ -1,0 +1,9 @@
+
+int duplicate(vector<int> arr){
+	bitset<32000> found;
+	for(int element :  arr){
+		if(found[element-1])
+			return element;
+		found[element-1] = true;
+	}
+}
