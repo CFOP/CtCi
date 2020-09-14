@@ -1,0 +1,38 @@
+
+nnn * 5
+(nnn/2)0
+
+100
+
+25 5*5
+
+22
+110
+550
+
+1  1
+2  2
+3  6
+4  24
+5  120
+6  720
+7 nnn0
+8 
+9
+10 nnn00
+
+125
+
+int factorialZeros(int n){
+
+	int ans = 0;
+	int p = 5;
+	while(p<=n){
+		ans += n/p;
+		p*=5;
+	}
+
+	return ans;
+
+}
+
