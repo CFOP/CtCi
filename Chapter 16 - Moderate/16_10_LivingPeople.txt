@@ -1,0 +1,44 @@
+/*
+oooooooooooo
+		oooooooooooooo
+oooooo
+					ooooooooooooo
+					o
+o
+*/
+
+/*
+0 1 5
+1 4 7
+
+ooooo
+ o
+     ooo
+0
+
+*/
+
+int max_People(vector<int> born, vector<int> death){
+
+	sort(born.begin(), born.end());	
+	sort(death.begin(), death.end());
+
+	int count = 0;
+	int ans = 0;
+
+	int i = 0, j = 0; //born, death
+	while(i<born.size()){
+		if(death[j]<born[i]){
+			count--;
+			j++;
+		}
+		else {
+			count++;
+			i++;
+			ans = max(ans, count);
+		}
+	}
+
+	return ans;
+
+}
